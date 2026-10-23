@@ -1,0 +1,20 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "posts": {
+      ".read": "auth != null",
+      "$postId": {
+        ".write": "auth != null && ((!data.exists() && newData.child('authorId').val() === auth.uid) || (data.exists() && data.child('authorId').val() === auth.uid && (!newData.exists() || newData.child('authorId').val() === auth.uid)))",
+        ".validate": "newData.hasChildren(['id', 'authorId', 'authorName', 'title', 'description', 'category', 'location', 'contact', 'createdAt', 'resolved']) && newData.child('id').val() === $postId && newData.child('title').isString() && newData.child('title').val().length >= 5 && newData.child('description').isString() && newData.child('description').val().length >= 15"
+      }
+    },
+    "users": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    }
+  }
+}
+

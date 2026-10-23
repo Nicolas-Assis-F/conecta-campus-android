@@ -1,0 +1,9 @@
+<resources>
+    <style name="Theme.ConectaCampus" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">#115E59</item>
+        <item name="android:navigationBarColor">#F8FAF9</item>
+    </style>
+</resources>
+
